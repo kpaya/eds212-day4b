@@ -1,0 +1,43 @@
+---
+title: "r-exploring_day4b"
+author: "Karol Paya"
+format: html
+editor_options: 
+  chunk_output_type: console
+---
+```{r}
+# load libraries ----
+library(GGally)
+library(skimr)
+library(palmerpenguins)
+library(tidyverse)
+
+# Always look at it ----
+View(penguins)
+
+# Check the column names ----
+names(penguins) 
+```
+
+```{r}
+#look at the dimensions
+dim(penguins)
+#summary of my df
+summary(penguins)
+
+#get summary using {skimr}
+skimr::skim(penguins)
+
+head(penguins, n=3)
+tail(penguins)
+
+#pairsplot
+GGally::ggpairs(penguins, columns = 3:6, 
+                ggplot2::aes(color=species))
+
+# Make a histogram of penguin flipper lengths ----
+ggplot(data = penguins, aes(x = flipper_length_mm, fill=species)) +
+  geom_histogram()
+```
+
+
